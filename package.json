@@ -1,0 +1,16 @@
+{
+  "name": "flipshopper-backend",
+  "version": "1.0.0",
+  "description": "This is backend of flipshopper project. Its like replica of Flipkart",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Ecommerce",
+    "Backend",
+    "Flipshopper"
+  ],
+  "author": "Kamran Khan",
+  "license": "ISC"
+}
