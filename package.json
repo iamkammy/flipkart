@@ -1,16 +1,32 @@
 {
-  "name": "flipshopper-backend",
+  "name": "flipkart-backend",
   "version": "1.0.0",
-  "description": "This is backend of flipshopper project. Its like replica of Flipkart",
-  "main": "server.js",
+  "description": "This is backend of flipkart project.",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "Ecommerce",
     "Backend",
-    "Flipshopper"
+    "Flipkart"
   ],
   "author": "Kamran Khan",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.2",
+    "concurrently": "^9.1.0",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
 }
