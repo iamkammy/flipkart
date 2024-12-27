@@ -1,6 +1,8 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import { connectDB } from "./db/db";
+// Routes
+import userRoutes from "./routes/user";
 
 dotenv.config(); // Load environment variables from .env file
 
@@ -12,6 +14,7 @@ connectDB();
 
 // middleware
 app.use(express.json());
+app.use("/api", userRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Our server is up and running in port");
