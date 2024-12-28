@@ -1,7 +1,20 @@
-import mongoose from "mongoose";
+import mongoose, { Document, Schema } from "mongoose";
 import bcrypt from "bcrypt";
 
-const userSchema = new mongoose.Schema(
+export interface User extends Document {
+  firstName: string;
+  lastName: string;
+  username: string;
+  email: string;
+  hash_password: string;
+  role: string;
+  contactNumber: string;
+  profilePicture: string;
+  authenticate: (password: string) => boolean;
+  fullName: string;
+}
+
+const userSchema: Schema = new Schema(
   {
     firstName: {
       type: String,
@@ -30,6 +43,7 @@ const userSchema = new mongoose.Schema(
       required: true,
       trim: true,
       unique: true,
+      index: true,
       lowercase: true,
     },
     hash_password: {
@@ -52,7 +66,11 @@ const userSchema = new mongoose.Schema(
 );
 
 userSchema.virtual("password").set(function (password) {
-  this.hash_password = bcrypt.hashSync(password, 20);
+  this.hash_password = bcrypt.hashSync(password, 10);
+});
+
+userSchema.virtual("fullName").get(function () {
+  return `${this.firstName} ${this.lastName}`;
 });
 
 userSchema.methods = {
@@ -61,5 +79,5 @@ userSchema.methods = {
   },
 };
 
-const userModel = mongoose.model("User", userSchema);
+const userModel = mongoose.model<User>("User", userSchema);
 export default userModel;
