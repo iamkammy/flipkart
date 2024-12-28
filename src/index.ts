@@ -1,8 +1,9 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import { connectDB } from "./db/db";
+import { logger } from "./utils/logger";
 // Routes
-import userRoutes from "./routes/user";
+import authRoutes from "./routes/auth";
 
 dotenv.config(); // Load environment variables from .env file
 
@@ -14,12 +15,8 @@ connectDB();
 
 // middleware
 app.use(express.json());
-app.use("/api", userRoutes);
-
-app.get("/", (req: Request, res: Response) => {
-  res.send("Our server is up and running in port");
-});
+app.use("/api", authRoutes);
 
 app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
+  logger.success(`[server]: Server is running at http://localhost:${port}`);
 });
