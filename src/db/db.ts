@@ -1,4 +1,5 @@
 import mongoose, { ConnectOptions } from "mongoose";
+import { logger } from "../utils/logger";
 
 export const connectDB = async (): Promise<void> => {
   try {
@@ -9,9 +10,9 @@ export const connectDB = async (): Promise<void> => {
         useNewUrlParser: true,
       } as ConnectOptions
     );
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    logger.info(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
-    console.error(`Error: ${(error as Error).message}`);
+    logger.error(`Error: ${(error as Error).message}`);
     process.exit(1);
   }
 };
