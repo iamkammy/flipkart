@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import User from "../models/user";
-import { logger } from "../utils/logger";
 import { AuthenticatedRequest } from "../interfaces/AuthenticatedRequest";
 
 class AuthController {
