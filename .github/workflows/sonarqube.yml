@@ -47,6 +47,9 @@ jobs:
           distribution: "adopt"
           java-version: "17"
 
+      - name: Set JAVA_HOME
+        run: echo "JAVA_HOME=/opt/hostedtoolcache/Java_Adopt_jdk/17.x.x/x64" >> $GITHUB_ENV
+
       - name: Analyze with SonarQube
 
         # You can pin the exact commit or the version.
