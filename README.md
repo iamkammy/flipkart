@@ -1,5 +1,4 @@
 # flipkart
 
+- Code Scanning - SonarQube
 - TODO: Authentication
-
-## Code Scanning - SonarQube
